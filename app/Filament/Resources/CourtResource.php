@@ -2,10 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CourtsResource\Pages;
-use App\Filament\Resources\CourtsResource\RelationManagers;
+use App\Filament\Resources\CourtResource\Pages;
+use App\Filament\Resources\CourtResource\RelationManagers;
 use App\Models\Court;
-use App\Models\Courts;
 use Filament\Forms;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -17,7 +16,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class CourtsResource extends Resource
+class CourtResource extends Resource
 {
     protected static ?string $model = Court::class;
 
@@ -55,7 +54,6 @@ class CourtsResource extends Resource
                 ]),
             ]);
     }
-
     public static function getRelations(): array
     {
         return [
@@ -67,8 +65,8 @@ class CourtsResource extends Resource
     {
         return [
             'index' => Pages\ListCourts::route('/'),
-            'create' => Pages\CreateCourts::route('/create'),
-            'edit' => Pages\EditCourts::route('/{record}/edit'),
+            'create' => Pages\CreateCourt::route('/create'),
+            'edit' => Pages\EditCourt::route('/{record}/edit'),
         ];
     }
 }
