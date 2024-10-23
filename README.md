@@ -17,6 +17,10 @@ $ cp .env.example .env
 Instalar pré-requisitos:
 * [Composer](https://getcomposer.org/download/)
 
+```sh
+$ composer install
+```
+
 ## Docker
 
 Instalar pré-requisitos:
