@@ -9,7 +9,8 @@
         "bezhansalleh/filament-shield": "^3.2",
         "filament/filament": "^3.2",
         "laravel/framework": "^11.9",
-        "laravel/tinker": "^2.9"
+        "laravel/tinker": "^2.9",
+        "leandrocfe/filament-ptbr-form-fields": "^3.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

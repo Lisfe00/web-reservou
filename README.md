@@ -55,3 +55,9 @@ $ docker-compose exec laravel.test php artisan migrate
 ou
 $ ./vendor/bin/sail artisan migrate
 ```
+
+Acesso: 
+
+```sh
+$ docker-compose exec laravel.test php artisan shield:install
+```
