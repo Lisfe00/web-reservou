@@ -16,4 +16,15 @@ class ListCourts extends ListRecords
             // Actions\CreateAction::make(),
         ];
     }
+
+    public function getBreadcrumb(): ?string
+    {
+        return null;
+    }
+
+    public function getHeading() :string
+    {
+        return 'Quadras';
+    }
+
 }

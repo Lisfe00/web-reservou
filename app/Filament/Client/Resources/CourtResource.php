@@ -31,6 +31,17 @@ class CourtResource extends Resource
             ]);
     }
 
+    public static function getBreadcrumb(): string
+    {
+        return '';
+    }
+
+    public function getHeading(): string
+    {
+        return 'Quadras';
+    }
+
+
     public static function table(Table $table): Table
     {
         return $table

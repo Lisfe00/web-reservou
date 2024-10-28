@@ -13,11 +13,14 @@ return new class extends Migration
     {
         Schema::create('courts', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('name');
             $table->integer('capacity');
             $table->float('hour_value');
             $table->string('image');
             $table->boolean('has_parking');
+            $table->boolean('active');
             $table->timestamps();
         });
     }
