@@ -15,7 +15,7 @@ class CourtPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->can('view_any_courts');
+        return $user->can('view_any_court');
     }
 
     /**
@@ -23,7 +23,7 @@ class CourtPolicy
      */
     public function view(User $user, Court $court): bool
     {
-        return $user->can('view_courts');
+        return $user->can('view_court');
     }
 
     /**
@@ -31,7 +31,7 @@ class CourtPolicy
      */
     public function create(User $user): bool
     {
-        return $user->can('create_courts');
+        return $user->can('create_court');
     }
 
     /**
@@ -39,7 +39,7 @@ class CourtPolicy
      */
     public function update(User $user, Court $court): bool
     {
-        return $user->can('update_courts');
+        return $user->can('update_court');
     }
 
     /**
@@ -47,7 +47,7 @@ class CourtPolicy
      */
     public function delete(User $user, Court $court): bool
     {
-        return $user->can('delete_courts');
+        return $user->can('delete_court');
     }
 
     /**
@@ -55,7 +55,7 @@ class CourtPolicy
      */
     public function deleteAny(User $user): bool
     {
-        return $user->can('delete_any_courts');
+        return $user->can('delete_any_court');
     }
 
     /**
@@ -63,7 +63,7 @@ class CourtPolicy
      */
     public function forceDelete(User $user, Court $court): bool
     {
-        return $user->can('force_delete_courts');
+        return $user->can('force_delete_court');
     }
 
     /**
@@ -71,7 +71,7 @@ class CourtPolicy
      */
     public function forceDeleteAny(User $user): bool
     {
-        return $user->can('force_delete_any_courts');
+        return $user->can('force_delete_any_court');
     }
 
     /**
@@ -79,7 +79,7 @@ class CourtPolicy
      */
     public function restore(User $user, Court $court): bool
     {
-        return $user->can('restore_courts');
+        return $user->can('restore_court');
     }
 
     /**
@@ -87,7 +87,7 @@ class CourtPolicy
      */
     public function restoreAny(User $user): bool
     {
-        return $user->can('restore_any_courts');
+        return $user->can('restore_any_court');
     }
 
     /**
@@ -95,7 +95,7 @@ class CourtPolicy
      */
     public function replicate(User $user, Court $court): bool
     {
-        return $user->can('replicate_courts');
+        return $user->can('replicate_court');
     }
 
     /**
@@ -103,6 +103,6 @@ class CourtPolicy
      */
     public function reorder(User $user): bool
     {
-        return $user->can('reorder_courts');
+        return $user->can('reorder_court');
     }
 }

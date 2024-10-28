@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->integer('capacity');
             $table->float('hour_value');
+            $table->string('image');
             $table->boolean('has_parking');
             $table->timestamps();
         });

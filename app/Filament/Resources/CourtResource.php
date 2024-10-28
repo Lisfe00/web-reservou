@@ -6,6 +6,7 @@ use App\Filament\Resources\CourtResource\Pages;
 use App\Filament\Resources\CourtResource\RelationManagers;
 use App\Models\Court;
 use Filament\Forms;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
@@ -30,6 +31,18 @@ class CourtResource extends Resource
                 TextInput::make('capacity'),
                 TextInput::make('hour_value'),
                 Toggle::make('has_parking'),
+                FileUpload::make('image')
+                    ->image()
+                    ->directory('courts')
+                    ->columnSpan(2),
+                
+                TextInput::make('cep'),
+                TextInput::make('street'),
+                TextInput::make('neighborhood'),
+                TextInput::make('city'),
+                TextInput::make('number'),
+                TextInput::make('UF'),
+                
             ]);
     }
 

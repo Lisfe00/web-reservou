@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('court_id');
             $table->foreign('court_id')->references('id')->on('courts');
             $table->string('cep');
-            $table->string('row');
+            $table->string('street');
             $table->string('neighborhood');
             $table->string('city');
             $table->string('number')->nullable();

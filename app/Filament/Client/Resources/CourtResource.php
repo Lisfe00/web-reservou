@@ -36,23 +36,16 @@ class CourtResource extends Resource
         return $table
         ->columns([
             Tables\Columns\Layout\Stack::make([
-                Tables\Columns\Layout\Stack::make([
+                Tables\Columns\ImageColumn::make('image')
+                        ->height('100%')
+                        ->width('100%'),
                     Tables\Columns\TextColumn::make('name')
                         ->weight(FontWeight::Bold),
                     Tables\Columns\TextColumn::make('hour_value')
                         ->formatStateUsing(fn (string $state): string => str($state)->after('://')->ltrim('www.')->trim('/'))
                         ->color('gray')
                         ->limit(30),
-                ]),
             ])->space(3),
-            Tables\Columns\Layout\Panel::make([
-                Tables\Columns\Layout\Split::make([
-                    Tables\Columns\ColorColumn::make('color')
-                        ->grow(false),
-                    Tables\Columns\TextColumn::make('description')
-                        ->color('gray'),
-                ]),
-            ])->collapsible(),
         ])
         ->paginated(false)
         ->filters([
@@ -65,9 +58,7 @@ class CourtResource extends Resource
             ->filters([
                 //
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-            ])
+            ->actions([])
             ->bulkActions([
       
             ]);
