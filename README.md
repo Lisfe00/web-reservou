@@ -34,13 +34,13 @@ $ ./vendor/bin/sail up
 
 Após isso, nas próximas basta usar:
 ```sh
-$ docker-compose up
+$ docker compose up
 ```
 
 Caso necessário, você pode acessar os containers via SSH:
 ```sh
-$ docker-compose exec laravel.test bash
-$ docker-compose exec mysql bash
+$ docker compose exec laravel.test bash
+$ docker compose exec mysql bash
 ```
 Liberar as permissoes do container:
 ```sh
