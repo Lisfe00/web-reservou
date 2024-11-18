@@ -85,7 +85,7 @@
 
 <body class="body-style">
     <header class="header-style">
-        <img src="{{ asset('/public/logo.svg') }}" alt="tag">
+        <img src="{{env('APP_URL')}}/images/logo.svg" alt="tag">
 
         <div class="navbar">
             <select name="city" id="city">
