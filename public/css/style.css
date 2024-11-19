@@ -1,0 +1,113 @@
+/* Definir variáveis para as cores utilizadas */
+:root {
+    --color-background: #fafafa;
+    --color-text: #545454;
+    --color-primary: #a78464;
+    --color-white: #ffffff;
+}
+
+.body-style {
+    font-family: "Poppins", sans-serif;
+    font-size: 18px;
+    background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+    height: 100vh;
+}
+
+.color-header {
+    /*  background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%); */
+    padding: 30px 30px 0px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.header-style {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar {
+    display: flex;
+    gap: 80px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /*  height: 85vh; */
+    border-bottom: 2px solid var(--color-primary);
+}
+
+.section-header-right {
+    display: flex;
+    flex-direction: column;
+    gap: 200px;
+}
+
+.cards {
+    display: flex;
+    gap: 150px;
+    justify-content: flex-start;
+}
+
+.message-header {
+    font-size: 50px;
+    font-weight: bold;
+    color: var(--color-text);
+    width: 50vw;
+}
+
+.title-header {
+    font-size: 50px;
+    font-weight: bold;
+    color: var(--color-primary);
+}
+
+.header-info {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.button {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    font-size: 20px;
+    padding: 15px 20px;
+    border-radius: 15px;
+    border: none;
+    width: 300px;
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.card-info {
+    display: flex;
+    gap: 20px;
+    font-size: 22px;
+}
+
+.list {
+    height: auto;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    padding: 30px;
+}
+
+.item-list {
+    height: auto;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6.9px);
+    -webkit-backdrop-filter: blur(6.9px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 30px;
+    width: -webkit-fill-available;
+}
