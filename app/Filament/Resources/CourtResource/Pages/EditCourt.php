@@ -34,6 +34,14 @@ class EditCourt extends EditRecord
     {
         $this->validate();
 
+        $this->record->name = $this->data['name'];  
+        $this->record->capacity = $this->data['capacity'];
+        $this->record->hour_value = $this->data['hour_value'];
+        $this->record->active = $this->data['active'];
+        $this->record->has_parking = $this->data['has_parking'];
+        $this->record->image = $this->data['image'];
+        $this->record->save();
+
         $addres = $this->record->address()->first();
         $addres->cep = $this->data['cep'];
         $addres->street = $this->data['street'];
