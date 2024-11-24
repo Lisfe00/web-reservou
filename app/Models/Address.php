@@ -15,4 +15,11 @@ class Address extends Model
         'number',
         'UF',
     ];
+
+
+    public static function getCity(){
+        $cities = Self::get()->pluck('city', 'city')->toArray();
+
+        return array_unique($cities);
+    }
 }

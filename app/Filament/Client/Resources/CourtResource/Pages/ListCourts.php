@@ -5,6 +5,7 @@ namespace App\Filament\Client\Resources\CourtResource\Pages;
 use App\Filament\Client\Resources\CourtResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
+use Illuminate\View\View;
 
 class ListCourts extends ListRecords
 {
@@ -17,6 +18,11 @@ class ListCourts extends ListRecords
         ];
     }
 
+    public function getHeader(): View
+    {
+        return view('header');
+    }
+
     public function getBreadcrumb(): ?string
     {
         return null;
@@ -26,5 +32,4 @@ class ListCourts extends ListRecords
     {
         return 'Quadras';
     }
-
 }

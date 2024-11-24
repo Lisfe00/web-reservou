@@ -60,7 +60,10 @@ class User extends Authenticatable
             return auth()->user()->hasAnyRole(RolesEnum::SUPER_ADMIN);
         }
         if ($panel->getId() === 'client') {
-            return auth()->user()->hasAnyRole(RolesEnum::SUPER_ADMIN, RolesEnum::CLIENT, RolesEnum::COURT_OWNER);
+            return auth()->user()->hasAnyRole(RolesEnum::SUPER_ADMIN, RolesEnum::CLIENT);
+        }
+        if ($panel->getId() === 'court_owner') {
+            return auth()->user()->hasAnyRole(RolesEnum::SUPER_ADMIN, RolesEnum::COURT_OWNER);
         }
 
         return false;

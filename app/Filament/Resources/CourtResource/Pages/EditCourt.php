@@ -30,17 +30,9 @@ class EditCourt extends EditRecord
         return $data;
     }
 
-    public function save(bool $shouldRedirect = true, bool $shouldSendSavedNotification = true): void
+    public function afterSave(bool $shouldRedirect = true, bool $shouldSendSavedNotification = true): void
     {
         $this->validate();
-
-        $this->record->name = $this->data['name'];  
-        $this->record->capacity = $this->data['capacity'];
-        $this->record->hour_value = $this->data['hour_value'];
-        $this->record->active = $this->data['active'];
-        $this->record->has_parking = $this->data['has_parking'];
-        $this->record->image = $this->data['image'];
-        $this->record->save();
 
         $addres = $this->record->address()->first();
         $addres->cep = $this->data['cep'];
@@ -50,11 +42,5 @@ class EditCourt extends EditRecord
         $addres->number = $this->data['number'];
         $addres->UF = $this->data['UF'];
         $addres->save();
-
-        Notification::make()
-        ->title(__('Dados salvos com sucesso!'))
-        ->seconds(5)
-        ->icon('heroicon-o-check-circle')
-        ->send();
     }
 }

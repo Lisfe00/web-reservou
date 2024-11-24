@@ -28,6 +28,8 @@ class CourtOwnerPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Amber,
             ])
+            ->topNavigation()
+            ->login()
             ->discoverResources(in: app_path('Filament/CourtOwner/Resources'), for: 'App\\Filament\\CourtOwner\\Resources')
             ->discoverPages(in: app_path('Filament/CourtOwner/Pages'), for: 'App\\Filament\\CourtOwner\\Pages')
             ->pages([

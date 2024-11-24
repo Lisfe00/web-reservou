@@ -4,6 +4,7 @@ namespace App\Filament\Client\Resources;
 
 use App\Filament\Client\Resources\CourtResource\Pages;
 use App\Filament\Client\Resources\CourtResource\RelationManagers;
+use App\Models\Address;
 use App\Models\Court;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -13,9 +14,12 @@ use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Support\Enums\FontWeight;
 use Filament\Tables;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+
+use function Laravel\Prompts\select;
 
 class CourtResource extends Resource
 {
@@ -45,34 +49,42 @@ class CourtResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+        ->modifyQueryUsing(function (Builder $query) {
+            $query->where('active', true);
+        })
         ->columns([
             Tables\Columns\Layout\Stack::make([
                 Tables\Columns\ImageColumn::make('image')
                         ->height('100%')
                         ->width('100%'),
                     Tables\Columns\TextColumn::make('name')
+                        ->searchable()
                         ->weight(FontWeight::Bold),
-                    Tables\Columns\TextColumn::make('hour_value')
-                        ->formatStateUsing(fn (string $state): string => str($state)->after('://')->ltrim('www.')->trim('/'))
-                        ->color('gray')
-                        ->limit(30),
             ])->space(3),
         ])
         ->paginated(false)
         ->filters([
-            //
+            SelectFilter::make('city')
+                ->label('Cidade')
+                ->multiple()
+                ->searchable()
+                ->options(Address::getCity())
+                ->query(function(Builder $query, $data) {
+                    Court::getQueryCityFilter($query, $data['values'])->toSql();
+                })
         ])
         ->contentGrid([
             'md' => 2,
             'xl' => 3,
         ])
-            ->filters([
-                //
-            ])
-            ->actions([])
-            ->bulkActions([
-      
-            ]);
+        ->actions([
+            Tables\Actions\Action::make('see_more')
+                ->label('Ver mais')
+                ->button(),
+        ])
+        ->bulkActions([
+    
+        ]);
     }
 
     public static function getRelations(): array

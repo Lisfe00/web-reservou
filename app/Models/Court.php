@@ -31,4 +31,16 @@ class Court extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public static function getQueryCityFilter($query, $cities)
+    {
+        // dd($cities);
+        if (!$cities) {
+            return $query;
+        }else{
+            return $query->whereHas('address', function ($query) use ($cities) {
+                $query->whereIn('city', $cities);
+            });
+        }
+    }
 }
