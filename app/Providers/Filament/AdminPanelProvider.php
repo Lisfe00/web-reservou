@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use Filament\Forms\Components\Field;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -17,21 +18,34 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Filament\Tables\Columns\Column;
+
 
 class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
         return $panel
+                ->bootUsing(function(){
+                    Field::configureUsing(function(Field $field){
+                        $field->translateLabel();
+                    });
+
+                    Column::configureUsing(function(Column $column){
+                        $column->translateLabel();
+                    });
+            })
             ->default()
             ->id('admin')
             ->path('admin')
             ->login()
             ->brandLogo(asset('images/logo.svg'))
             ->brandLogoHeight('4rem')
+            ->brandName('Reservou')
             ->colors([
                 'primary' => Color::Purple,
             ])
+            ->favicon(asset('images/icone.svg'))
             ->topNavigation()
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')

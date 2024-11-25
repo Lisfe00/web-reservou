@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Facades\Auth;
 
 class Court extends Model
 {
@@ -42,5 +43,21 @@ class Court extends Model
                 $query->whereIn('city', $cities);
             });
         }
+    }
+
+    public static function getReservs($query){
+        $courts = Court::where('user_id', Auth::user()->id)->pluck('id')->toArray();
+
+        $query->whereIn('court_id', $courts);
+
+        return $query;
+    }
+
+    public static function getQueryClient()
+    {
+        return Self::where('active', 1)
+            ->whereHas('dates', function ($query) {
+                $query->where('status', 'available');
+            });
     }
 }

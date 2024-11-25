@@ -18,9 +18,9 @@ use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
-use Illuminate\Container\Attributes\Auth;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Auth;
 
 class CourtResource extends Resource
 {
@@ -37,13 +37,6 @@ class CourtResource extends Resource
     {
         return $form
             ->schema([
-                Select::make('user_id')
-                    ->label('Usuário')
-                    ->options(
-                        \App\Models\User::all()->pluck('name', 'id')
-                    )
-                    ->native(false)
-                    ->required(),
                 TextInput::make('name')
                     ->label('Nome')
                     ->required(),
@@ -94,7 +87,7 @@ class CourtResource extends Resource
     {
         return $table
             ->modifyQueryUsing(
-                fn (Builder $query) => $query->where('user_id', auth()->user()->id)
+                fn (Builder $query) => $query->where('user_id', Auth::user()->id)
             )
             ->columns([
                 TextColumn::make('name')
@@ -116,9 +109,7 @@ class CourtResource extends Resource
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                //
             ]);
     }
 

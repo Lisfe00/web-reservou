@@ -50,7 +50,7 @@ class CourtResource extends Resource
     {
         return $table
         ->modifyQueryUsing(function (Builder $query) {
-            $query->where('active', true);
+            return Court::getQueryClient();
         })
         ->columns([
             Tables\Columns\Layout\Stack::make([

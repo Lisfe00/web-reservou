@@ -2,6 +2,7 @@
 
 namespace App\Filament\CourtOwner\Resources\CourtResource\RelationManagers;
 
+use Carbon\Carbon;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
@@ -26,6 +27,7 @@ class DatesRelationManager extends RelationManager
         return $form
             ->schema([
                 Forms\Components\DateTimePicker::make('date')
+                    ->seconds(false)
                     ->required()
                     ->label('Data'),
                 Forms\Components\Select::make('status')
@@ -46,9 +48,15 @@ class DatesRelationManager extends RelationManager
             ->recordTitleAttribute('date')
             ->columns([
                 Tables\Columns\TextColumn::make('date')
-                    ->label('Data'),
+                    ->label('Data')
+                    ->formatStateUsing(function ($state) {
+                        return Carbon::parse($state)->format('d/m/Y H:i');
+                    }),
                 Tables\Columns\TextColumn::make('status')
-                    ->label('Status'),
+                    ->label('Status')
+                    ->formatStateUsing(function ($state) {
+                        return $state == 'available' ? 'Disponível' : 'Indisponível';
+                    }),
             ])
             ->filters([
                 //
