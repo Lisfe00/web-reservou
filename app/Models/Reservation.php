@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Reservation extends Model
 {
@@ -22,5 +23,10 @@ class Reservation extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public static function getQueryClient(){
+        return self::query()
+            ->where('user_id', Auth::user()->id);
     }
 }

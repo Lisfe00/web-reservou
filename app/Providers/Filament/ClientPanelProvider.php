@@ -50,7 +50,8 @@ class ClientPanelProvider extends PanelProvider
             ->pages([])
             ->favicon(asset('images/icone.svg'))
             ->brandName('Reservou')
-            ->navigation(false)
+            ->navigation()
+            ->topNavigation()
             ->discoverWidgets(in: app_path('Filament/Client/Widgets'), for: 'App\\Filament\\Client\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,

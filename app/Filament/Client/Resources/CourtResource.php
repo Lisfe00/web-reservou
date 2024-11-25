@@ -40,6 +40,11 @@ class CourtResource extends Resource
         return '';
     }
 
+    public static function getModelLabel(): string
+    {
+        return 'quadra';
+    }
+
     public function getHeading(): string
     {
         return 'Quadras';
