@@ -17,7 +17,7 @@
                     <div class="message-header"
                         <span class="title-header">Reservou</span>, a melhor escolha para reservas de quadras esportivas
                     </div>
-                    <button type="button" class="button">Ver quadras disponíveis</button>
+           
                 </div>
                 <div class="cards">
                     <div class="card-info">
@@ -34,7 +34,7 @@
                     </div>
                 </div>
             </section>
-            <img width="800" src="{{env('APP_URL')}}/images/inicio.svg" alt="tag" class="fullscreen-image">
+            <img width="500" src="{{env('APP_URL')}}/images/inicio.svg" alt="tag" class="fullscreen-image">
             <!--  height="800" -->
         </header>
     </main>

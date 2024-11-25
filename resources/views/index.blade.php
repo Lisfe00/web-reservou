@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -156,4 +156,4 @@
     <footer class="footer"></footer>
 </body>
 
-</html>
+</html> --}}

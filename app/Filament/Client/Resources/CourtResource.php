@@ -65,6 +65,7 @@ class CourtResource extends Resource
                         ->width('100%'),
                     Tables\Columns\TextColumn::make('name')
                         ->searchable()
+                        -> size('lg')
                         ->weight(FontWeight::Bold),
             ])->space(3),
         ])
@@ -87,8 +88,9 @@ class CourtResource extends Resource
         ])
         ->actions([
             Tables\Actions\Action::make('see_more')
-                ->label('Ver mais')
+                ->label('Ver mais detalhes')
                 ->button()
+                -> extraAttributes(['class'=> "button"])
                 ->action(function($record) {
                     Session::forget('record');          
                     Session::put('record', $record->id);
