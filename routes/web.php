@@ -1,11 +1,10 @@
 <?php
 
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\ReservController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::post('/reserv', [ReservController::class, 'reserv'])->name('reserv');
 
 Route::get('/login', function () {
     return view('login');

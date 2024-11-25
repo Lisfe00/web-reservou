@@ -18,6 +18,7 @@ use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Session;
 
 use function Laravel\Prompts\select;
 
@@ -25,7 +26,7 @@ class CourtResource extends Resource
 {
     protected static ?string $model = Court::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    // protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
@@ -78,6 +79,8 @@ class CourtResource extends Resource
                     Court::getQueryCityFilter($query, $data['values'])->toSql();
                 })
         ])
+        ->recordAction('see_more')
+        ->recordUrl(null)
         ->contentGrid([
             'md' => 2,
             'xl' => 3,
@@ -85,7 +88,12 @@ class CourtResource extends Resource
         ->actions([
             Tables\Actions\Action::make('see_more')
                 ->label('Ver mais')
-                ->button(),
+                ->button()
+                ->action(function($record) {
+                    Session::forget('record');          
+                    Session::put('record', $record->id);
+                    return redirect('client/view-page');
+                }),
         ])
         ->bulkActions([
     

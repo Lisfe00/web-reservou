@@ -22,7 +22,7 @@ class ReservationResource extends Resource
 {
     protected static ?string $model = Reservation::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    // protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
@@ -75,6 +75,10 @@ class ReservationResource extends Resource
                     ->modalDescription('Tem certeza que deseja cancelar essa reserva?')
                     ->modalHeading('Cancelar reserva')
                     ->button()
+                    ->color('danger')
+                    ->visible(function ($record) {
+                        return $record->status == 'reserved';
+                    })
                     ->action(function ($record) {
                         $record->update(['status' => 'canceled']);
                         Date::find($record->date_id)->update(['status' => 'available']);
